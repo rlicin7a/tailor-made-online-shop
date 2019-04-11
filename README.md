@@ -1,1 +1,0 @@
-# tailor-made-online-shop
