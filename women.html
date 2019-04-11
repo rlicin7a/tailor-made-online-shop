@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- written by Ken -->
+        <title>Tailor-made Online Shop | Home</title>
+        <meta name="description" content="A simple online clothes shop">
+        <!-- insert external style sheet for decorating the HTML file-->
+        <link rel="stylesheet" href="styles.css" />
+        <!-- import Front Awesome library for customizing icons -->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+    </head>
+
+    <body>
+        <!-- create a button for users to go back to the top 
+        when the button is clicked, an event happens and therefore scroll back to the top of the document -->
+        <button id="top-btn" title="Back to top" onclick="backToTop()"><i class="fa fa-chevron-up"></i></button>
+
+        <!-- create navigation links of different product categories and search form in the header -->
+        <header class="header">
+            <nav class="nav">
+                <!-- use an unordered list because order is not important --> 
+                <ul>
+                    <li><a id="logo" href="index.html">Tailor-made Online Shop</a></li>
+                    <li><a href="men.html">Men</a></li>
+                    <li><a href="women.html">Women</a></li>
+                    <li>  
+                        <form class="form" name="search">
+                            <input type="text" id="search-bar" name="bar" placeholder="Search...">
+                            <button type="submit" id="search-btn" name="submit" onclick=""><i class="fas fa-search"></i></button>
+                        </form>
+                    </li>             
+                    <li>
+                        <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        
+        <section class="section-container">
+            <h2 class="section-header">Women Fashion</h2>
+            <div class="flex-container">
+                <div class="shop-item">
+                    <img class="shop-item-image" src="images/women/Levi_s_Denim_Reversible_Bomber.jpg">
+                    <div class="shop-item-name">
+                        <span class="brand-name">Levi's</span>
+                        <div class="product-name">Denim Reversible Bomber</div>
+                    </div>
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">$971.00</span>
+                        <form class="form" name="cart">
+                            <button type="button" class="cart-add-btn" name="add" onclick="">ADD TO CART</button>
+                        </form>  
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <img class="shop-item-image" src="images/women/MISSGUIDED_Oversized_Denim_Jacket.jpg">
+                    <div class="shop-item-name">
+                        <span class="brand-name">MISSGUIDED</span>
+                        <div class="product-name">Oversized Denim Jacket</div>
+                    </div>
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">$664.70</span>
+                        <form class="form" name="cart">
+                            <button type="button" class="cart-add-btn" name="add" onclick="">ADD TO CART</button>
+                        </form>  
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <img class="shop-item-image" src="images/women/Mango_Flecked_Suit_Blazer.jpg">
+                    <div class="shop-item-name">
+                        <span class="brand-name">Mango</span>
+                        <div class="product-name">Flecked Suit Blazer</div>
+                    </div>
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">$728.90</span>
+                        <form class="form" name="cart">
+                            <button type="button" class="cart-add-btn" name="add" onclick="">ADD TO CART</button>
+                        </form>  
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <img class="shop-item-image" src="images/women/Mango_High-Waist_Straight_Trousers.jpg">
+                    <div class="shop-item-name">
+                        <span class="brand-name">Mango</span>
+                        <div class="product-name">High-Waist Straight Trousers</div>
+                    </div>
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">$555.50</span>
+                        <form class="form" name="cart">
+                            <button type="button" class="cart-add-btn" name="add" onclick="">ADD TO CART</button>
+                        </form>  
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <img class="shop-item-image" src="images/women/Superdry_Rookie_Star_Shacket.jpg">
+                    <div class="shop-item-name">
+                        <span class="brand-name">Superdry</span>
+                        <div class="product-name">Rookie Star Shacket</div>
+                    </div>
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">$282.90</span>
+                        <form class="form" name="cart">
+                            <button type="button" class="cart-add-btn" name="add" onclick="">ADD TO CART</button>
+                        </form>  
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <img class="shop-item-image" src="images/women/TOPSHOP_Moto_Mid_Blue_Embroidered_Side_Stripe_Jamie_Jeans.jpg">
+                    <div class="shop-item-name">
+                        <span class="brand-name">TOPSHOP</span>
+                        <div class="product-name">Moto Mid Blue Embroidered Side Stripe Jamie Jeans</div>
+                    </div>
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">$584.80</span>
+                        <form class="form" name="cart">
+                            <button type="button" class="cart-add-btn" name="add" onclick="">ADD TO CART</button>
+                        </form>  
+                    </div>
+                </div>            
+                <div class="shop-item">
+                    <img class="shop-item-image" src="images/women/Vero_Moda_Yiki_34_Sleeve_Blazer.jpg">
+                    <div class="shop-item-name">
+                        <span class="brand-name">Vero Moda</span>
+                        <div class="product-name">Yiki 34 Sleeve Blazer</div>
+                    </div>
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">$346.20</span>
+                        <form class="form" name="cart">
+                            <button type="button" class="cart-add-btn" name="add" onclick="">ADD TO CART</button>
+                        </form>  
+                    </div>
+                </div>
+                <div class="shop-item">
+                    <img class="shop-item-image" src="images/women/Ripe_Maternity_Maternity_Knife_Pleat_Dress.jpg">
+                    <div class="shop-item-name">
+                        <span class="brand-name">Ripe Maternity</span>
+                        <div class="product-name">Maternity Knife Pleat Dress</div>
+                    </div>
+                    <div class="shop-item-details">
+                        <span class="shop-item-price">$629.00</span>
+                        <form class="form" name="cart">
+                            <button type="button" class="cart-add-btn" name="add" onclick="">ADD TO CART</button>
+                        </form>  
+                    </div>
+                </div>        
+            </div>
+        </section>
+
+        <!-- similary we create navigation links for the footer-->
+        <footer class="footer">
+            <nav class="nav">
+                <ul>
+                    <li>
+                        <!-- create hyperlink (new tab) for each of the navigation sites -->
+                        <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li id="logo">Tailor-made Online Shop</li>
+                </ul>
+            </nav>
+        </footer>
+
+        <!-- <script src="js/jquery-3.3.0.js"></script> -->
+        <script src="js/Cart.js"></script>
+        <script>
+            /*  determine whether the back to top button will be shown according to how many px are away from the top
+                use scrollTop property to get the number of px that the document object has been scrolled down
+                if the distance is more than 24 px, the button will be displayed
+                else the button will remain hidden  */
+            function scroll() {
+                if (document.documentElement.scrollTop > 24 || document.body.scrollTop > 24 ) {
+                    document.getElementById("top-btn").style.display = "block"; 
+                } else {
+                    document.getElementById("top-btn").style.display = "none";
+                }
+            }
+
+            // an event handler that sets the scrollTop property of document object to 0 and sends us back to the top
+            function backToTop() {
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+            }
+
+            /*  every time when the window object is scrolled
+                the scroll function is called and determine whether the button should be shown  */
+            window.onscroll = function() {scroll();}
+        </script>
+    </body>
+</html>
