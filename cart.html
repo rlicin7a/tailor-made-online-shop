@@ -1,141 +1,136 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <!-- written by Ken -->
-        <title>Tailor-made Online Shop | Home</title>
-        <meta name="description" content="A simple online clothes shop">
-        <!-- insert external style sheet for decorating the HTML file-->
-        <link rel="stylesheet" href="styles.css" />
-        <!-- import Front Awesome library for customizing icons -->
-        <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
-    </head>
+// Cart.js
+// load the body first before creating the Cart object
+// written by Ken
 
-    <body>
-        <!-- create a button for users to go back to the top 
-        when the button is clicked, an event happens and therefore scroll back to the top of the document -->
-        <button id="top-btn" title="Back to top" onclick="backToTop()"><i class="fa fa-chevron-up"></i></button>
+// use getElementsByClassName() method to get a collection of elements having the name 'cart-remove-btn' in the page 
+// store all these elements in the array referenced by variable removeBtns
+var removeBtns = document.getElementsByClassName('cart-remove-btn');
+// then loop through each of the remove button in the removeBtns array
+for (var i=0; i<removeBtns.length; i++) {
+    var removeBtn = removeBtns[i];
+    removeBtn.addEventListener('click', removeItem); // when the remove button is clicked, call the removeItem function (event handler)
+}
 
-        <!-- create navigation links of different product categories and search form in the header -->
-        <header class="header">
-            <nav class="nav">
-                <!-- use an unordered list because order is not important --> 
-                <ul>
-                    <li><a id="logo" href="index.html">Tailor-made Online Shop</a></li>
-                    <li><a href="men.html">Men</a></li>
-                    <li><a href="women.html">Women</a></li>
-                    <li>  
-                        <form class="form" name="search">
-                            <input type="text" id="search-bar" name="bar" placeholder="Search...">
-                            <button type="submit" id="search-btn" name="submit" onclick=""><i class="fas fa-search"></i></button>
-                        </form>
-                    </li>             
-                    <li>
-                        <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        
-        <section class="section-container">
-            <h2 class="section-header">My Shopping Cart</h2>
-            <table class="cart-table">
-                <tr>
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                </tr>
-                <tr>
-                    <td class="cart-item">
-                        <img class="cart-item-image" src="images/men/Hollister_5-Pack_Crew_Multipack_T-Shirts.jpg">
-                        <div>
-                            <span class="brand-name">Hollister</span>
-                            <div class="product-name">5-Pack Crew Multipack T-Shirts</div>
-                        </div>
-                    </td>
-                    <td> 
-                        <form class="form" name="cart">
-                            <input class="cart-qty-input" type="number" value="1">
-                        </form>  
-                    </td>
-                    <td>
-                        <span class="shop-item-price">$492.00</span>
-                        <form class="form" name="cart">
-                            <button class="cart-remove-btn" type="button" name="remove" onclick="">REMOVE</button>
-                        </form>   
-                    </td>
-                </tr>
-                <tr>
-                    <td class="cart-item">
-                        <img class="cart-item-image" src="images/men/Hollister_Crew_Neck_Multipack_T-Shirts.jpg">
-                        <div>
-                            <span class="brand-name">Hollister</span>
-                            <div class="product-name">Crew Neck Multipack T-Shirts</div>
-                        </div>
-                    </td>
-                    <td> 
-                        <form class="form" name="cart">
-                            <input class="cart-qty-input" type="number" value="1">
-                        </form>  
-                    </td>
-                    <td>
-                        <span class="shop-item-price">$283.90</span>
-                        <form class="form" name="cart">
-                            <button class="cart-remove-btn" type="button" name="remove" onclick="">REMOVE</button>
-                        </form>   
-                    </td>
-                </tr>  
-                <tr class="test">
-                    <th class="none"></th>
-                    <th class="none"></th>
-                    <th class="last-th">
-                        <span class="cart-total-name">Total:</span>
-                        <span class="cart-total-price">$0</span>
-                    </th>                    
-                </tr>
-            </table>
-            <form class="form" name="cart">
-                <button type="button" id="purchase-btn" name="purchase" onclick="">PURCHASE</button>
-            </form>            
-        </section>
+var qtyInputs = document.getElementsByClassName('cart-qty-input');
+for (var i=0; i<qtyInputs.length; i++) {
+    var input = qtyInputs[i];
+    input.addEventListener('change', qtyValid); // check if the quantity is a valid number after quantity input is changed
+}
 
-        <!-- similary we create navigation links for the footer-->
-        <footer class="footer">
-            <nav class="nav">
-                <ul>
-                    <li>
-                        <!-- create hyperlink (new tab) for each of the navigation sites -->
-                        <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </li>
-                    <li id="logo">Tailor-made Online Shop</li>
-                </ul>
-            </nav>
-        </footer>
+var addBtns = document.getElementsByClassName('cart-add-btn');
+for (var i = 0; i<addBtns.length; i++) {
+    var addBtn = addBtns[i];
+    addBtn.addEventListener('click', fetchData); // fetch the data from the store after "Add to Cart" button is clicked
+}
 
-        <!-- <script src="js/jquery-3.3.0.js"></script> -->
-        <script src="Cart.js">
-            /*  determine whether the back to top button will be shown according to how many px are away from the top
-                use scrollTop property to get the number of px that the document object has been scrolled down
-                if the distance is more than 24 px, the button will be displayed
-                else the button will remain hidden  */
-            function scroll() {
-                if (document.documentElement.scrollTop > 24 || document.body.scrollTop > 24 ) {
-                    document.getElementById("top-btn").style.display = "block"; 
-                } else {
-                    document.getElementById("top-btn").style.display = "none";
-                }
-            }
+function removeItem(event) {
+    var removeClicked = event.target; // the remove button clicked is the event.target (object that triggers the event)
+    removeClicked.parentElement.parentElement.parentElement.remove(); // remove the whole table row
+    updateTotal(); // update total price of all the merchandise with the function updateTotal()
+}
 
-            // an event handler that sets the scrollTop property of document object to 0 and sends us back to the top
-            function backToTop() {
-                document.documentElement.scrollTop = 0;
-                document.body.scrollTop = 0;
-            }
+function qtyValid(event) {
+    input = event.target;
+    // make sure the quantity input is always a number greater than or equal to 1
+    if (isNaN(input.value) || input.value <= 0) {
+        input.value = 1;
+    }
+    updateTotal(); // update total price
+}
 
-            /*  every time when the window object is scrolled
-                the scroll function is called and determine whether the button should be shown  */
-            window.onscroll = function() {scroll();}
-        </script>
-    </body>
-</html>
+// get the data of individual shop item that is added to cart
+function fetchData(event) {
+    var addBtn = event.target;
+    var shopItem = addBtn.parentElement.parentElement.parentElement;
+    var imageSrc = shopItem.getElementsByClassName('shop-item-image')[0].src;
+    var brandName = shopItem.getElementsByClassName('brand-name')[0].innerText;
+    var productName = shopItem.getElementsByClassName('product-name')[0].innerText;
+    var price = shopItem.getElementsByClassName('shop-item-price')[0].innerText;
+    // console.log(imageSrc, brandName, productName, price);
+    addItem(imageSrc, brandName, productName, price);
+}
+
+function addItem(imageSrc, brandName, productName, price) {
+    var cartRow = document.createElement('tr');
+    // var cartTable = document.getElementsByClassName('cart-table')[0];
+    console.log(cartTable)
+
+    var cartRowContents = `
+    <td class="cart-item">
+        <img class="cart-item-image" src="${imageSrc}">
+        <div>
+            <span class="brand-name">${brandName}</span>
+            <div class="product-name">${productName}</div>
+        </div>
+    </td>
+    <td> 
+        <form class="form" name="cart">
+            <input class="cart-qty-input" type="number" value="1">
+        </form>  
+    </td>
+    <td>
+        <span class="shop-item-price">${price}</span>
+        <form class="form" name="cart">
+            <button class="cart-remove-btn" type="button" name="remove" onclick="">REMOVE</button>
+        </form>   
+    </td>`
+}
+
+
+
+
+
+
+function updateTotal() {
+    var priceArray = document.getElementsByClassName('shop-item-price');
+    var total = 0; // initial total price is 0
+    // get the price and quantity of each cart item 
+    for (var i=0; i<priceArray.length; i++) {
+        var priceElement = priceArray[i];
+        var price = parseFloat(priceElement.innerText.replace('$', ''));
+        /*
+        var str = priceElement.innerText; // get the innerText of the priceElement and store it into variable str
+        console.log(str); // the str actually contains dollar sign which is undesirable
+        var price = str.replace('$', ''); // remove the dollar sign from the str object by using replace() method
+        parseFloat(price); // turn the str referenced by variable price into a floating point no.
+        // should use a complex expression shown above to save memory space
+        // because repleace() method does not change the original str and return a new str
+        */   
+        var qtyElement = qtyInputs[i];
+        var qty = qtyElement.value;
+        total += price * qty; // get the total price at every iteration 
+    }
+    total = Math.round(total * 100) / 100; // round the total price to 2 decimal places
+    document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total; // display the total price in the cart
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
