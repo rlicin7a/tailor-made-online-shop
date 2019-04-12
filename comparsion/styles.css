@@ -98,18 +98,13 @@ html, body {
     cursor: pointer; 
 }
 
-.index-image {
+.index-image{
     margin: 1.5em;
 }
 
-.image {
-    position: absolute;
-    display: flex;
-}
 
 
-
-/* the codes below decorate the content of men and women page */
+/* the codes below decorate the contents of men and women page */
 /* written by Ken */
 
 .section-container {
@@ -131,25 +126,6 @@ html, body {
     font-size: 2em;
 }
 
-.section-subheader {
-    text-align: left;
-    font-size: 1em;
-}
-
-.button {
-    text-decoration: none; 
-    background-color: #d6f5f5;
-    border: none;
-    color: blue;
-    padding: 10px;
-    border-radius: 5px;
-    font-family: monospace;
-}
-
-.button:hover {
-    background-color: #eafafa;
-}
-
 /* use flexbox to organise the elements in a neat way */
 .flex-container {
     margin: 1.5em;
@@ -161,21 +137,11 @@ html, body {
 }
 
 .shop-item-image {
-    max-height: 250px; /* reduce the size of image */
+	/* reduce the size of image */
+    max-height: 250px; 
+	max-width: 171px; 
     border: 1px dotted grey; /* to distinguish the image and background */ 
     border-radius: 1%; /* make the border rounded */
-}
-
-.btn {
-    background-color: #3ca540;
-    color: white;
-    border: .5px solid grey;
-    border-radius: 5%; /* make the border rounded */ 
-}
-
-.btn:hover {
-    background-color: #4a8c4c; /* make a darker color for the hover effect */
-    cursor: pointer;    
 }
 
 .cart-add-btn, .cart-remove-btn {
@@ -220,17 +186,11 @@ html, body {
     font-family: 'Crimson Text'; /* use a more easy-to-read font for numbers */
 }
 
-#mentop, #menbottom, #menshoes{
-    position: absolute;
-    visibility: hidden;
-}
 
-#womenTop, #womenBottom, #womenShoes {
-    position: none;    
-    visibility: hidden;
-}
 
-/* the codes below decorate the content of the shopping cart page */
+
+
+/* the codes below decorate the contents of the shopping cart page */
 /* written by Ken */
 
 .cart-table {
@@ -325,7 +285,8 @@ tr:not(:first-child):not(:last-child):hover {
     cursor: pointer;    
 }
 
-
-
-
-
+/* these codes are written by others */
+.section-subheader {
+    text-align: left;
+    font-size: 1em;
+}
