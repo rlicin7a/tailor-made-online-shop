@@ -1,0 +1,331 @@
+/* import "Crimson Text", "Dosis" and "Indie Flower" from Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text|Dosis|Indie+Flower');
+
+/* the codes below are about styles of header and footer as well as scroll back to top button */
+/* written by Ken */
+
+* {
+    box-sizing: border-box; /* make the height and width of the box count for the padding and margin */
+    font-family: 'Dosis';
+}
+
+html, body {
+    /* remove white space surrounding the header and footer */
+    margin: 0;  
+    padding: 0;
+    /* default font size for normal text is 16px */
+    /* default font size for h2 should be 1.5em which is 24px (1.5 * 16) */
+    /* remark: em is an unit relative to the font-size of the element */
+}
+
+.header, footer {
+    background-image: url("images/header-and-footer/test-bg.jpg");  /* import the same background image for header and footer */ 
+    background-size: cover; /* expand the background image as much as possible*/
+    text-align: center;
+}
+
+/* make sure the footer is always fixed on the bottom and take up the full width of the screen (optional) 
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+} */
+
+.nav ul {
+    margin: 0; /* remove the white space up top */
+    padding: 1em; /* increase heights of the two navigation bars */
+}
+
+.nav li {
+    display: inline; /* make the navigation sites display in one line instead of sepearted lines */
+    padding: 0 1% /* add some horizontal space between each element */
+}
+
+.nav a {
+    text-decoration: none; /* remove the underline of each navigation element */
+    color: white; /* make the words over the background image easier to see */
+    padding: .5em; /* increase click area of each navigation element */
+}
+
+/* add an effect when we mouse over elements of the navigation bar */
+.nav a:hover {
+    background-color: hsl(0, 0%, 50%); 
+}
+
+#logo {
+    /* make the logo "stand out" */
+    color: goldenrod;
+    font-family: 'Indie Flower', cursive; 
+    font-size: 1.5em; /* the logo is 1.5 times the normal font size */
+    background-color: transparent; /* disable hover effect for the logo */
+}
+
+.form {
+    display: inline; /* remore the default line break of form */
+}
+
+#search-bar {
+    width: 30em; /* make the search bar wider */
+    padding-left: .5em; /* add some space before the text in the search bar */
+}
+
+#search-btn {
+    margin-left: -1em; /* remove the space between the search bar and its button */
+}
+
+/* add an effect when we mouse over the search bar button */
+#search-btn:hover {
+    background-color: hsl(0, 0%, 50%); 
+    cursor: pointer; /* make the cursor a pointer */
+}
+
+/* customizing the back to top button */
+#top-btn {
+    position: fixed; /* fix its position */
+    bottom: 80px; /* move it 80px away from the bottom */
+    right: 15px; /* move it 15px away from the bottom */
+    z-index: 1080; /* Make sure it is always the top layer */
+    background-color: #f1bb33; 
+    border: none; /* remove the border */
+    color: white; /* set the text color to white */
+    padding: 10px; /* add some space inside it */
+    border-radius: 5px; /* make its corners rounded */
+}
+  
+#top-btn:hover {
+    background-color: #d29f1e;
+    cursor: pointer; 
+}
+
+.index-image {
+    margin: 1.5em;
+}
+
+.image {
+    position: absolute;
+    display: flex;
+}
+
+
+
+/* the codes below decorate the content of men and women page */
+/* written by Ken */
+
+.section-container {
+    /* border: 1px solid red; */
+    max-width: 1080px; /* elements inside should not exceed 1080px */
+    margin: 1.5em auto; /* shorthand - make it 1.5em away from the top and bottom as well as center horizontally */
+    padding: 0 .5em; /* add some space to left and right only */
+}
+
+/* center the welcome banner */
+#welcome-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-header {
+    text-align: center;
+    font-size: 2em;
+}
+
+.section-subheader {
+    text-align: left;
+    font-size: 1em;
+}
+
+.button {
+    text-decoration: none; 
+    background-color: #d6f5f5;
+    border: none;
+    color: blue;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: monospace;
+}
+
+.button:hover {
+    background-color: #eafafa;
+}
+
+/* use flexbox to organise the elements in a neat way */
+.flex-container {
+    margin: 1.5em;
+    display: flex; 
+    flex-direction: row; /* elements are arranged in rows */
+    flex-wrap: wrap; /* automatically adjust the number of elements in each line according to the window size */
+    justify-content: space-around; /* horizontally align the elements with space before, between, and after them */
+    /* border: 1px solid blue; */
+}
+
+.shop-item-image {
+    max-height: 250px; /* reduce the size of image */
+    border: 1px dotted grey; /* to distinguish the image and background */ 
+    border-radius: 1%; /* make the border rounded */
+}
+
+.btn {
+    background-color: #3ca540;
+    color: white;
+    border: .5px solid grey;
+    border-radius: 5%; /* make the border rounded */ 
+}
+
+.btn:hover {
+    background-color: #4a8c4c; /* make a darker color for the hover effect */
+    cursor: pointer;    
+}
+
+.cart-add-btn, .cart-remove-btn {
+    background-color: #3ca540;
+    color: white;
+    border: .5px solid grey;
+    border-radius: 5%; /* make the border rounded */ 
+}
+
+.cart-add-btn:hover {
+    background-color: #4a8c4c; /* make a darker color for the hover effect */
+    cursor: pointer;    
+}
+
+.shop-item {
+    margin: 1.5em; /* to seperate each item */
+    max-width: 171px; /* the box for shop item */
+}
+
+.shop-item-name {
+    margin: .25em;
+    text-align: center;
+}
+
+.brand-name {
+    font-weight: bolder; /* to emphasise the brand name */
+}
+
+.product-name {
+    font-size: 15px; /* make the font size smaller */
+    height: 30px; /* to align the price and add to cart button for each item because shop item name may occupy more than 2 lines */
+    color: #444; /* to distinguish brand name and product name */
+}
+
+.shop-item-details {
+    margin: 1em .25em 0; /* add more space to the top of this box */
+    display: flex;
+    justify-content: space-between; /* add the most space between price and add to cart button */
+}
+
+.shop-item-price, .cart-total-price {
+    font-family: 'Crimson Text'; /* use a more easy-to-read font for numbers */
+}
+
+#mentop, #menbottom, #menshoes{
+    position: absolute;
+    visibility: hidden;
+}
+
+#womenTop, #womenBottom, #womenShoes {
+    position: none;    
+    visibility: hidden;
+}
+
+/* the codes below decorate the content of the shopping cart page */
+/* written by Ken */
+
+.cart-table {
+    margin: 3em auto;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 1em;
+    text-align: left;
+}
+
+th {
+    background-color: #3ca540;
+    color: white;
+}
+
+tr:not(:last-child) {
+    border: 1px solid grey;
+}
+
+.last-th {
+    border: 1px solid grey;
+}
+
+.none {
+    background: none;
+    border: none;
+}
+
+/* only the first and last rows have a shorter height of 75px */
+tr:not(:first-child):not(:last-child) {
+    height: 100px;
+}
+
+/* all rows except for the first and last row will have a hover effect */
+tr:not(:first-child):not(:last-child):hover {
+    background-color: #f2f2f2;
+}
+
+.cart-total-name {
+    margin-right: .5em;    
+}
+
+.cart-total-price {
+    font-weight: normal;
+}
+
+#purchase-btn {
+    display: block; /* make it a display so as to center it by using the margin property below */
+    margin: 1.5em auto;
+    background-color: #5eb3ed;
+    color: white;
+    font-size: 1.5em;
+    border: 1px solid grey;
+    border-radius: 5%;
+}
+
+#purchase-btn:hover {
+    background-color: #4696cc;
+    cursor: pointer;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: right; /* push the elemnt to the right horizontally */
+    align-items: center; /* center the elements vertically */
+    text-align: left;
+    width: 750px; /* fix the width of this <td> element regardless */
+}
+
+.cart-item-image {
+    max-height: 75px;
+    max-width: 75px;
+    margin-right: 1em;
+}
+
+.cart-qty-input {
+    height: 1.5em;
+    width: 60px;
+    padding: .5em;
+}
+
+.cart-remove-btn {
+    background-color: #EB5757;
+    margin-left: 1em;
+}
+
+.cart-remove-btn:hover {
+    background-color: #bc3737;
+    cursor: pointer;    
+}
+
+
+
+
+
