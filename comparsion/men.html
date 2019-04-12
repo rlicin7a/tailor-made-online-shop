@@ -8,8 +8,6 @@
         <link rel="stylesheet" href="styles.css" />
         <!-- import Front Awesome library for customizing icons -->
         <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
-        <!-- import the function library for "my" shopping cart -->
-        <script src="myCart.js"></script>
     </head>
 
     <body>
@@ -24,7 +22,13 @@
                 <ul>
                     <li><a id="logo" href="index.html">Tailor-made Online Shop</a></li>
                     <li><a href="men.html">Men</a></li>
-                    <li><a href="women.html">Women</a></li>            
+                    <li><a href="women.html">Women</a></li>
+                    <li>  
+                        <form class="form" name="search">
+                            <input type="text" id="search-bar" name="bar" placeholder="Search...">
+                            <button type="submit" id="search-btn" name="submit" onclick=""><i class="fas fa-search"></i></button>
+                        </form>
+                    </li>             
                     <li>
                         <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
                     </li>
@@ -34,11 +38,6 @@
         
         <section class="section-container">
             <h2 class="section-header">Men Fashion</h2>
-            <h4 class="section-subheader">
-                <a href="men.html" class="button">Tops</a>
-                <a href="men_bottoms.html" class="button">Bottoms</a>
-                <a href="men_shoes.html" class="button">Shoes</a>
-            </h4>
             <div class="flex-container">
                 <div class="shop-item">
                     <img class="shop-item-image" src="images/men/Hollister_5-Pack_Crew_Multipack_T-Shirts.jpg">
@@ -49,7 +48,7 @@
                     <div class="shop-item-details">
                         <span class="shop-item-price">$492.00</span>
                         <form class="form" name="cart">
-                            <button type="button" class="cart-add-btn" name="add">ADD TO CART</button>
+                            <button type="button" class="cart-add-btn" name="add" onclick="">ADD TO CART</button>
                         </form>  
                     </div>
                 </div>
@@ -62,7 +61,7 @@
                     <div class="shop-item-details">
                         <span class="shop-item-price">$283.90</span>
                         <form class="form" name="cart">
-                            <button type="button" class="cart-add-btn" name="add">ADD TO CART</button>
+                            <button type="button" class="cart-add-btn" name="add" onclick="">ADD TO CART</button>
                         </form>  
                     </div>
                 </div>
@@ -75,7 +74,7 @@
                     <div class="shop-item-details">
                         <span class="shop-item-price">$327.90</span>
                         <form class="form" name="cart">
-                            <button type="button" class="cart-add-btn" name="add">ADD TO CART</button>
+                            <button type="button" class="cart-add-btn" name="add" onclick="">ADD TO CART</button>
                         </form>  
                     </div>
                 </div>
@@ -88,7 +87,7 @@
                     <div class="shop-item-details">
                         <span class="shop-item-price">$430.00</span>
                         <form class="form" name="cart">
-                            <button type="button" class="cart-add-btn" name="add">ADD TO CART</button>
+                            <button type="button" class="cart-add-btn" name="add" onclick="">ADD TO CART</button>
                         </form>  
                     </div>
                 </div>
@@ -101,7 +100,7 @@
                     <div class="shop-item-details">
                         <span class="shop-item-price">$239.90</span>
                         <form class="form" name="cart">
-                            <button type="button" class="cart-add-btn" name="add">ADD TO CART</button>
+                            <button type="button" class="cart-add-btn" name="add" onclick="">ADD TO CART</button>
                         </form>  
                     </div>
                 </div>
@@ -114,7 +113,7 @@
                     <div class="shop-item-details">
                         <span class="shop-item-price">$507.90</span>
                         <form class="form" name="cart">
-                            <button type="button" class="cart-add-btn" name="add">ADD TO CART</button>
+                            <button type="button" class="cart-add-btn" name="add" onclick="">ADD TO CART</button>
                         </form>  
                     </div>
                 </div>            
@@ -125,9 +124,9 @@
                         <div class="product-name">Slub-Cotton Henley T-Shirt</div>
                     </div>
                     <div class="shop-item-details">
-                        <span class="shop-item-price">$91.90</span>
+                        <span class="shop-item-price">$191.90</span>
                         <form class="form" name="cart">
-                            <button type="button" class="cart-add-btn" name="add">ADD TO CART</button>
+                            <button type="button" class="cart-add-btn" name="add" onclick="">ADD TO CART</button>
                         </form>  
                     </div>
                 </div>    
@@ -140,7 +139,7 @@
                     <div class="shop-item-details">
                         <span class="shop-item-price">$120.00</span>
                         <form class="form" name="cart">
-                            <button type="button" class="cart-add-btn" name="add">ADD TO CART</button>
+                            <button type="button" class="cart-add-btn" name="add" onclick="">ADD TO CART</button>
                         </form>  
                     </div>
                 </div>                    
@@ -162,7 +161,8 @@
             </nav>
         </footer>
 
-        <script>
+        <script src="js/jquery-3.3.0.js"></script>
+        <script src="js/Cart.js">
             /*  determine whether the back to top button will be shown according to how many px are away from the top
                 use scrollTop property to get the number of px that the document object has been scrolled down
                 if the distance is more than 24 px, the button will be displayed
