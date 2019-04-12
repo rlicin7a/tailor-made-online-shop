@@ -270,7 +270,7 @@ tr:not(:first-child):not(:last-child):hover {
 }
 
 .cart-qty-input {
-    height: 1.5em;
+    height: 2em;
     width: 60px;
     padding: .5em;
 }

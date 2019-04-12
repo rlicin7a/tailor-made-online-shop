@@ -10,11 +10,8 @@ for (var i = 0; i<addBtns.length; i++) {
     addBtn.addEventListener('click', fetchData); // fetch the data from the store after "Add to Cart" button is clicked
 }
 
-var qtyInputs = document.getElementsByClassName('cart-qty-input');
-for (var i=0; i<qtyInputs.length; i++) {
-    var input = qtyInputs[i];
-    input.addEventListener('change', qtyValid); // check if the quantity is a valid number after quantity input is changed
-}
+var qtyInputs;
+var cartItems = JSON.parse(localStorage.getItem("CART_ITEMS"));
 
 /*
 // use getElementsByClassName() method to get a collection of elements having the name 'cart-remove-btn' in the page 
@@ -40,8 +37,6 @@ for (var i=0; i<removeBtns.length; i++) {
 
 // localStorage.clear(); // reset localStorage for different customers (a complete membership system will be made in the next version)
 
-var cartItems = JSON.parse(localStorage.getItem("CART_ITEMS"));
-
 // If it is null, which means CART_ITEMS is never stored, initialize it with an array
 if (cartItems == null) {
     cartItems = []
@@ -65,7 +60,8 @@ function fetchData(event) {
         imageSrc,
         brandName,
         productName,
-        price
+        price,
+        qty: 1
     }
 
     cartItems.push(item);
@@ -73,15 +69,13 @@ function fetchData(event) {
     // console.log(imageSrc, brandName, productName, price);
 }
 
-function generateCartItem(item) {
+function generateCartItem(item, index) {
     var cartRow = document.createElement('tr');
     cartRow.className = "cart-row";
     /*  
     assign an unqiue id for each cartRow
     the id is the same as the index of cartItems array
     */
-    index = 0;
-    index = index + 1;
 
     var cartRowContents = `
     <td class="cart-item">
@@ -91,16 +85,16 @@ function generateCartItem(item) {
             <div class="product-name">${item.productName}</div>
         </div>
     </td>
-    <td> 
+    <td id="qty-${index}"> 
         <form class="form" name="cart">
-            <input class="cart-qty-input" type="number" value="1">
+            <input class="cart-qty-input" type="number" value="${item.qty}">
         </form>  
     </td>
     <td class="align-td">
         <span class="shop-item-price">${item.price}</span>
         <form class="form" name="cart">
             <!-- pass the index directly to the function with the field onClick="removeItem(index)"-->
-            <button class="cart-remove-btn" type="button" name="remove" onclick="removeItem(index)">REMOVE</button>
+            <button class="cart-remove-btn" type="button" name="remove" onclick="removeItem(${index})">REMOVE</button>
         </form>   
     </td>`;
     cartRow.innerHTML = cartRowContents;
@@ -109,11 +103,18 @@ function generateCartItem(item) {
 }
 
 function qtyValid(event) {
-    input = event.target;
+    const input = event.target;
+    let newValue = input.value;
+
     // make sure the quantity input is always a number greater than or equal to 1
-    if (isNaN(input.value) || input.value <= 0) {
-        input.value = 1;
+    if (isNaN(newValue) || newValue <= 0) {
+        newValue = 1;
+        input.value = newValue;
     }
+
+    const itemIndex = input.parentElement.parentElement.id.split('-')[1]
+    cartItems[itemIndex].qty = newValue;
+    
     updateTotal();
 }
 
@@ -128,6 +129,7 @@ function removeItem(index) {
      * so as to use parentElement.getAttributeByName to obtain the index
      */
     cartItems.splice(index, 1);
+    localStorage.setItem("CART_ITEMS", JSON.stringify(cartItems));
     reload();
 }
 
@@ -152,6 +154,9 @@ function updateTotal() {
     }
     total = Math.round(total * 100) / 100; // round the total price to 2 decimal places
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total; // display the total price in the cart
+
+    // save cart items when each change
+    localStorage.setItem("CART_ITEMS", JSON.stringify(cartItems));
 }
 
 function reload() {
@@ -166,10 +171,17 @@ function reload() {
         }
     })
     
-    cartItems.forEach((item) => {
-        const cartItem = generateCartItem(item)
+    cartItems.forEach((item, key) => {
+        const cartItem = generateCartItem(item, key)
         $('.cart-table').find('tr:last').prev().after(cartItem)
     })
+
+    qtyInputs = document.getElementsByClassName('cart-qty-input');
+
+    for (var i=0; i<qtyInputs.length; i++) {
+        var input = qtyInputs[i];
+        input.addEventListener('change', qtyValid); // check if the quantity is a valid number after quantity input is changed
+    }
 
     updateTotal();
 }
